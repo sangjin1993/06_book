@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- 1. properties : DB 접속 username, password, url, driver 선언 -->
+	<properties>
+		<property name="url" value="jdbc:oracle:thin:@//127.0.0.1:1521/XE"/>
+		<property name="username" value="SCOTT"/>
+		<property name="password" value="TIGER"/>
+		<property name="driver" value="oracle.jdbc.OracleDriver"/>
+		
+		<property name="mysql_url" value="jdbc:mysql://127.0.0.1:3306/book?serverTimezone=Asia/Seoul"/>
+		<property name="mysql_username" value="book"/>
+		<property name="mysql_password" value="book"/>
+		<property name="mysql_driver" value="com.mysql.cj.jdbc.Driver"/>
+	</properties>	
+	
+	<!-- 2. settings -->
+	<settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+    
+	<!-- 3. typeAliases -->
+	<typeAliases>
+		<typeAlias type="book.vo.Book" alias="Book"/>
+		<typeAlias type="book.vo.Code" alias="Code"/>
+		<typeAlias type="book.vo.Manager" alias="Manager"/>
+	</typeAliases>
+	
+	<!-- 4. environments -->
+	<environments default="oracleXE">
+		<environment id="oracleXE">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="url" value="${url}"/>
+				<property name="username" value="${user}"/>
+				<property name="password" value="${password}"/>
+				<property name="driver" value="${driver}"/>
+			</dataSource>
+		</environment>
+		
+		<environment id="mysql">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="url" value="${mysql_url}"/>
+				<property name="username" value="${mysql_username}"/>
+				<property name="password" value="${mysql_password}"/>
+				<property name="driver" value="${mysql_driver}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- 5. mappers -->
+	<mappers>
+		<mapper resource="book/mapper/BookMapper.xml"/>
+		<mapper resource="book/mapper/CodeMapper.xml"/>
+		<mapper resource="book/mapper/ManagerMapper.xml"/>
+	</mappers>
+	
+</configuration>
