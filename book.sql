@@ -1,8 +1,8 @@
 --Book sample project table
 
-/* Å×ÀÌºí : BOOK                                 | Å×ÀÌºí¸í : MANAGER
+/* í…Œì´ë¸” : BOOK                                 | í…Œì´ë¸”ëª… : MANAGER
     --------------------------------------------|----------------------------------------
-    ÄÃ·³¸í,      µ¥ÀÌÅÍ Å¸ÀÔ(Å©±â),    Á¦¾àÁ¶°Ç       |ÄÃ·³¸í,         µ¥ÀÌÅÍ Å¸ÀÔ(Å©±â),  Á¦¾àÁ¶°Ç
+    ì»¬ëŸ¼ëª…,      ë°ì´í„° íƒ€ìž…(í¬ê¸°),    ì œì•½ì¡°ê±´       |ì»¬ëŸ¼ëª…,         ë°ì´í„° íƒ€ìž…(í¬ê¸°),  ì œì•½ì¡°ê±´
     --------------------------------------------|----------------------------------------
     BOOK_SEQ    NUMBER              PK          |MANAGER_SEQ    NUMBER           PK
     ISBN        VARCHAR2(13)        U           |MANAGER_ID     VARCHAR2(10)
@@ -18,7 +18,7 @@
     MOD_ID      VARCHAR2(10)                    |
     MOD_DATE    DATE                            |
     --------------------------------------------|------------------------------------------
-    Å×ÀÌºí ¸í CODE                                |
+    í…Œì´ë¸” ëª… CODE                                |
     --------------------------------------------|------------------------------------------
     CODE        NUMVER(4)           PK
     P_CODE      NUMBER(4)           NOT NULL
@@ -32,7 +32,7 @@
     MOD_ID      VARCHAR2(10) 
     MOD_DATE    DATE      
     --------------------------------------------|------------------------------------------
-    ½ÃÄö½º ¸í : SEQ_BOOK, SEQ_MANAGER : NOCYCLE, NOMAXVALUE, 1¾¿ Áõ°¡
+    ì‹œí€€ìŠ¤ ëª… : SEQ_BOOK, SEQ_MANAGER : NOCYCLE, NOMAXVALUE, 1ì”© ì¦ê°€
 */
 
 DROP TABLE BOOK;
@@ -54,6 +54,171 @@ CREATE TABLE BOOK
  , CONSTRAINT UQ_ISBN UNIQUE (ISBN)
 );
 
+-- BOOK ìž…ë ¥
+-- ì¶œíŒì‚¬: ì°½ë¹„
+INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
+VALUES (SEQ_BOOK.NEXTVAL , '9788936433598', 'ì±„ì‹ì£¼ì˜ìž', 'í•œê°•', 'ë§¨ë¶€í‚¤ ìƒì„ ë°›ì€ í•œê°•ì˜ ì†Œì„¤', 1001, 247, 10000, 5, 0);
+INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
+VALUES (SEQ_BOOK.NEXTVAL , '9788936438005', 'í’ˆìœ„ ìžˆëŠ” ì‚¶', 'ì •ì†Œí˜„', 'ì •ì†Œí˜„ ì†Œì„¤ì§‘', 1001, 248, 14000, 6, 0);
+INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
+VALUES (SEQ_BOOK.NEXTVAL , '9788936464691', 'ì²œì‚¬ëŠ” ì¹¨ë¬µí–ˆë‹¤', 'í•œí•˜ì¸ë¦¬ížˆ ëµ', 'ë…¸ë²¨ ë¬¸í•™ìƒ ìˆ˜ìƒ ìž‘ê°€ í•˜ì¸ë¦¬ížˆ ëµì˜ ìœ ìž‘', 1001, 256, 14000, 3, 0);
+COMMIT;
+-- ì¶œíŒì‚¬ : ë”ìŠ¤í† ë¦¬
+INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
+VALUES (SEQ_BOOK.NEXTVAL , '9791159039690', 'ì–´ë¦°ì™•ìž(ì´ˆíŒë³¸)', 'ìƒí…ì¥íŽ˜ë¦¬', 'ì„¸ìƒì—ì„œ ê°€ìž¥ ìˆœìˆ˜í•œ ì˜í˜¼, ì–´ë¦° ì™•ìž ì´ì•¼ê¸°ì˜¤ë¦¬ì§€ë„ ì´ˆíŒë³¸ í‘œì§€ë””ìžì¸!', 1002, 150, 8820, 5, 0);
+INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
+VALUES (SEQ_BOOK.NEXTVAL , '9791159036514', 'ë°ë¯¸ì•ˆ(ì´ˆíŒë³¸)(ë¦¬ì»¤ë²„ í•œì •íŒ)', 'í—¤ë¥´ë§Œ í—¤ì„¸', 'ë‚˜ë¥¼ ì°¾ì•„ê°€ëŠ” ê¸¸ <ë°ë¯¸ì•ˆ>', 1002, 248, 10800, 10, 0);
+INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
+VALUES (SEQ_BOOK.NEXTVAL , '9791195759019', 'ìŠ¤í† ë¦¬í…”ë§ìœ¼ë¡œ ì„¤ë“ì˜ ê³ ìˆ˜ê°€ ë˜ë¼', 'ì‰¬ìœˆì†¡', 'í•˜ë²„ë“œ ë¹„ì¦ˆë‹ˆìŠ¤ ìŠ¤ì¿¨ì—ì„œ ì¸ì •ë°›ì€ ìŠ¤í† ë¦¬í…”ë§ ì„¤ë“ë²•', 1002, 328, 13500, 7, 0);
+COMMIT;
+-- ì¶œíŒì‚¬ :  ìœ„ì¦ˆë¤ í•˜ì›ƒ
+INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
+VALUES (SEQ_BOOK.NEXTVAL , '9791190182645', 'ì œ ì¸ìƒì— ë‹µì´ ì—†ì–´ìš”', 'ì„ ë°”', 'í¬ë¦¬ì—ì´í„° ì„ ë°”ì˜ ê±°ì¹¨ì—†ëŠ” í˜„ìƒë§Œë‹´', 1003, 192, 10800, 5, 0);
+INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
+VALUES (SEQ_BOOK.NEXTVAL , '9791190182560', 'ì¸ê°„ ë³¸ì„±ì˜ ë²•ì¹™', 'ë¡œë²„íŠ¸ ê·¸ë¦°', '500ë§Œ ë…„ì— ê±¸ì³ í˜•ì„±ëœ ì¸ê°„ ë³¸ì„±ì— ê´€í•œ íƒêµ¬ì„œ!', 1003, 920, 28800, 10, 0);
+INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
+VALUES (SEQ_BOOK.NEXTVAL , '9791190305273', 'ì˜í™”ëŠ” ë‘ ë²ˆ ì‹œìž‘ëœë‹¤', 'ì´ë™ì§„', 'ì˜í™”ëŠ” ë‘ ë²ˆ ì‹œìž‘ëœë‹¤. ì²˜ìŒ í•œ ë²ˆì€ ê·¹ìž¥ ì•ˆì—ì„œ, ê·¸ë‹¤ìŒ í•œ ë²ˆì€ ê·¹ìž¥ ë°–ì—ì„œ.', 1003, 944, 35100, 3, 0);
+COMMIT;
+-- ì¶œíŒì‚¬ : í”
+INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
+VALUES (SEQ_BOOK.NEXTVAL , '9791196394509', 'ì£½ê³  ì‹¶ì§€ë§Œ ë–¡ë³¶ì´ëŠ” ë¨¹ê³  ì‹¶ì–´', 'ë°±ì„¸í¬', 'ì˜ì‹¬ ì—†ì´ íŽ¸ì•ˆí•˜ê²Œ ì‚¬ëž‘í•˜ê³  ì‚¬ëž‘ë°›ê³  ì‹¶ì€ í•œ ì‚¬ëžŒì˜ ì´ì•¼ê¸°', 1004, 208, 12420, 4, 0);
+INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
+VALUES (SEQ_BOOK.NEXTVAL , '9791196394578', 'ì£½ê³  ì‹¶ì§€ë§Œ ë–¡ë³¶ì´ëŠ” ë¨¹ê³  ì‹¶ì–´. 2', 'ë°±ì„¸í¬', 'ìš°ìš¸ì— ë„ì·¨ë˜ê¸°ë³´ë‹¤ ë‚˜ë¥¼ ê¸ì •í•˜ê¸°ì— ê³¨ëª°í•˜ë ¤ê³  ì• ì“°ëŠ” í•œ ì‚¬ëžŒì˜ ì´ì•¼ê¸°', 1004, 264, 12420, 6, 0);
+INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
+VALUES (SEQ_BOOK.NEXTVAL , '9791196394547', 'ì–´ìƒ‰í•˜ì§€ ì•Šê²Œ ì‚¬ëž‘ì„ ë§í•˜ëŠ” ë°©ë²•', 'ì†Œì€ì„±', 'ë»”í•œ ë§ˆìŒì€ ì—†ì–´ìš”, ë»”í•œ í‘œí˜„ì´ ìžˆì„ ë¿.', 1004, 292, 13320, 1, 0);
+COMMIT;
+-- ì¶œíŒì‚¬ : ë¶í•˜ìš°ìŠ¤
+INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
+VALUES (SEQ_BOOK.NEXTVAL , '9788956055466', 'ì±…ì€ ë„ë¼ë‹¤', 'ë°•ì›…í˜„', 'ì¸ë¬¸í•™ìœ¼ë¡œ ê´‘ê³ í•˜ëŠ” ë°•ì›…í˜„ì´ ë“¤ë ¤ì£¼ëŠ” í’ìš”ë¡œìš´ ì‚¶ì„ ìœ„í•œ ê¹Šì´ ìžˆëŠ” ì±… ì½ê¸°ì˜ ì •ìˆ˜!', 1005, 348, 14400, 11, 0);
+INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
+VALUES (SEQ_BOOK.NEXTVAL , '9791164050321', 'í‰ì†Œì˜ ë°œê²¬', 'ìœ ë³‘ìš±', 'í‰ë²”í•˜ì§€ë§Œ ì‹œì‹œí•˜ì§€ ì•Šì€ ìš°ë¦¬ì˜ â€˜í‰ì†Œâ€™ ì†ì— ìˆ¨ì€ ë†€ë¼ìš´ íž˜!', 1005, 280, 12600, 5, 0);
+INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
+VALUES (SEQ_BOOK.NEXTVAL , '9788956058054', 'ë‚´ê°€ í™•ì‹¤ížˆ ì•„ëŠ” ê²ƒë“¤', 'ì˜¤í”„ë¼ ìœˆí”„ë¦¬', '14ë…„ ë™ì•ˆì˜ ì¹¼ëŸ¼ì—ì„œ ì—„ì„ í•œ ë³´ì„ ê°™ì€ ì‚¬ìƒ‰ì˜ ê¸€ë“¤!', 1005, 280, 12420, 3, 0);
+COMMIT;
+--==================================================================
+-- book í…Œì´ë¸”ì˜ ê¸°ë³¸ ì¿¼ë¦¬ë“¤ ìž‘ì„±
+-- 1. 1ê±´ ì¡°íšŒ
+SELECT b.book_seq
+     , b.isbn
+     , b.title
+     , b.author
+     , b.content
+     , b.company_cd
+     , b.company_nm
+     , b.total_page
+     , b.price
+     , b.quantity
+     , b.reg_id
+     , b.reg_date
+     , b.mod_id
+     , b.mod_date
+  FROM v_book b
+ WHERE b.book_seq = 1
+;
+-- 2. ì „ì²´ ì¡°íšŒ
+-- (1) ì¶œíŒì‚¬ ì½”ë“œë¡œ ì¡°íšŒ
+SELECT b.book_seq
+     , b.isbn
+     , b.title
+     , b.author
+     , b.content
+     , b.company_cd
+     , b.company_nm
+     , b.total_page
+     , b.price
+     , b.quantity
+     , b.reg_id
+     , b.reg_date
+     , b.mod_id
+     , b.mod_date
+  FROM v_book b
+ WHERE b.company_cd = 1001
+;
+
+-- (2) ì¼ì • ê°€ê²© ì´ìƒì¸ ë„ì„œ ì¡°íšŒ
+SELECT b.book_seq
+     , b.isbn
+     , b.title
+     , b.author
+     , b.content
+     , b.company_cd
+     , b.company_nm
+     , b.total_page
+     , b.price
+     , b.quantity
+     , b.reg_id
+     , b.reg_date
+     , b.mod_id
+     , b.mod_date
+  FROM v_book b
+ WHERE b.price >= 20000
+;
+
+-- (3) ê°€ê²© ë²”ìœ„ ë„ì„œ ì¡°íšŒ
+SELECT b.book_seq
+     , b.isbn
+     , b.title
+     , b.author
+     , b.content
+     , b.company_cd
+     , b.company_nm
+     , b.total_page
+     , b.price
+     , b.quantity
+     , b.reg_id
+     , b.reg_date
+     , b.mod_id
+     , b.mod_date
+  FROM v_book b
+ WHERE b.price BETWEEN 10000 AND 15000A
+;
+
+-- (4) ì¼ì • ê°€ê²© ì´í•˜ì¸ ë„ì„œ ì¡°íšŒ
+SELECT b.book_seq
+     , b.isbn
+     , b.title
+     , b.author
+     , b.content
+     , b.company_cd
+     , b.company_nm
+     , b.total_page
+     , b.price
+     , b.quantity
+     , b.reg_id
+     , b.reg_date
+     , b.mod_id
+     , b.mod_date
+  FROM v_book b
+ WHERE b.price <= 15000
+;
+
+-- (5) ì œëª©, ì €ìž, ì¶œíŒì‚¬ ì¡°ê±´ ì¢…í•© ì¡°íšŒ
+SELECT b.book_seq
+     , b.isbn
+     , b.title
+     , b.author
+     , b.content
+     , b.company_cd
+     , b.company_nm
+     , b.total_page
+     , b.price
+     , b.quantity
+     , b.reg_id
+     , b.reg_date
+     , b.mod_id
+     , b.mod_date
+  FROM v_book b
+ WHERE b.title LIKE '%ë‹¤%'
+    OR b.author LIKE '%ë‹¤%'
+    OR b.content LIKE '%ë‹¤%'
+    OR b.company_nm LIKE '%ë‹¤%'
+;
+-- 3. 1ê±´ ìž…ë ¥
+
+-- 4. 1ê±´ ìˆ˜ì •
+
+-- 5. 1ê±´ ì‚­ì œ
+
 DROP TABLE MANAGER;
 CREATE TABLE MANAGER
 (  MANAGER_SEQ  NUMBER
@@ -68,10 +233,10 @@ CREATE TABLE MANAGER
 );
 
 INSERT INTO MANAGER (MANAGER_SEQ, MANAGER_ID, NAME, PASSWORD, REG_ID)
-VALUES (0, 'root', '¼öÆÛ°ü¸®ÀÚ', 'root', 0);
+VALUES (0, 'root', 'ìˆ˜í¼ê´€ë¦¬ìž', 'root', 0);
 
 INSERT INTO MANAGER (MANAGER_SEQ, MANAGER_ID, NAME, PASSWORD, REG_ID)
-VALUES (SEQ_MANAGER.NEXTVAL, 'admin', '°ü¸®ÀÚ', 'admin', 0);
+VALUES (SEQ_MANAGER.NEXTVAL, 'admin', 'ê´€ë¦¬ìž', 'admin', 0);
 COMMIT;
 
 DROP TABLE CODE;
@@ -105,63 +270,45 @@ NOCYCLE
 ;
 
 /*-----------------------------------------------------------------------------------
-  ÃâÆÇ»ç ¹øÈ£¿Í ÃâÆÇ»ç ÀÌ¸§À» ÄÚµå·Î °ü¸®
-  ÃâÆÇ»ç °ü·Ã ÄÚµå´Â 1000 ¹ø´ë°¡ ÃâÆÇ»ç ÄÚµå
-  ÀÚ¼¼ÇÑ °³º° ÃâÆÇ»çÀÇ Á¤º¸´Â 1001, 1002, 1003, ... ¼ø¼­·Î Áõ°¡ÇÏµµ·Ï ½ÇÁ¦ µ¥ÀÌÅÍ¸¦ ³Ö°í ½ÃÀÛ
+  ì¶œíŒì‚¬ ë²ˆí˜¸ì™€ ì¶œíŒì‚¬ ì´ë¦„ì„ ì½”ë“œë¡œ ê´€ë¦¬
+  ì¶œíŒì‚¬ ê´€ë ¨ ì½”ë“œëŠ” 1000 ë²ˆëŒ€ê°€ ì¶œíŒì‚¬ ì½”ë“œ
+  ìžì„¸í•œ ê°œë³„ ì¶œíŒì‚¬ì˜ ì •ë³´ëŠ” 1001, 1002, 1003, ... ìˆœì„œë¡œ ì¦ê°€í•˜ë„ë¡ ì‹¤ì œ ë°ì´í„°ë¥¼ ë„£ê³  ì‹œìž‘
 */
--- CODE ÃâÆÇ»ç INSERT INTO ±¸¹® ÀÛ¼º
+-- CODE ì¶œíŒì‚¬ INSERT INTO êµ¬ë¬¸ ìž‘ì„±
 INSERT INTO CODE (CODE, P_CODE, CODE_NM, CODE_VAL, USE_YN, CODE_DESC, SORT_ORDER, REG_ID)
-VALUES (1000, 0, 'COMPANY', 'ÃâÆÇ»ç', 'Y', 'ÃâÆÇ»çÄÚµå', 0, 0);
+VALUES (1000, 0, 'COMPANY', 'ì¶œíŒì‚¬', 'Y', 'ì¶œíŒì‚¬ì½”ë“œ', 0, 0);
 INSERT INTO CODE (CODE, P_CODE, CODE_NM, CODE_VAL, USE_YN, CODE_DESC, SORT_ORDER, REG_ID)
-VALUES (1001, 1000, 'CHANGBI', 'Ã¢ºñ', 'Y', 'Ã¢ÀÛ°ú ºñÆò¼­', 0, 0);
+VALUES (1001, 1000, 'CHANGBI', 'ì°½ë¹„', 'Y', 'ì°½ìž‘ê³¼ ë¹„í‰ì„œ', 0, 0);
 INSERT INTO CODE (CODE, P_CODE, CODE_NM, CODE_VAL, USE_YN, CODE_DESC, SORT_ORDER, REG_ID)
-VALUES (1002, 1000, 'THE_STORY', '´õ½ºÅä¸®', 'Y', '´õ ½ºÅä¸®', 0, 0);
+VALUES (1002, 1000, 'THE_STORY', 'ë”ìŠ¤í† ë¦¬', 'Y', 'ë” ìŠ¤í† ë¦¬', 0, 0);
 INSERT INTO CODE (CODE, P_CODE, CODE_NM, CODE_VAL, USE_YN, CODE_DESC, SORT_ORDER, REG_ID)
-VALUES (1003, 1000, 'WISDOM', 'À§Áî´ý', 'Y', 'À§Áî´ý ÇÏ¿ì½º', 0, 0);
+VALUES (1003, 1000, 'WISDOM', 'ìœ„ì¦ˆë¤', 'Y', 'ìœ„ì¦ˆë¤ í•˜ìš°ìŠ¤', 0, 0);
 INSERT INTO CODE (CODE, P_CODE, CODE_NM, CODE_VAL, USE_YN, CODE_DESC, SORT_ORDER, REG_ID)
-VALUES (1004, 1000, 'HUEN', 'È¥', 'Y', 'µ¶¸³ÃâÆÇ È¥', 0, 0);
+VALUES (1004, 1000, 'HUEN', 'í˜¼', 'Y', 'ë…ë¦½ì¶œíŒ í˜¼', 0, 0);
 INSERT INTO CODE (CODE, P_CODE, CODE_NM, CODE_VAL, USE_YN, CODE_DESC, SORT_ORDER, REG_ID)
-VALUES (1005, 1000, 'BOOK_HOUSE', 'ºÏÇÏ¿ì½º', 'Y', 'ºÏÇÏ½º¿ì', 0, 0);
+VALUES (1005, 1000, 'BOOK_HOUSE', 'ë¶í•˜ìš°ìŠ¤', 'Y', 'ë¶í•˜ìŠ¤ìš°', 0, 0);
 COMMIT;
 
--- BOOK ÀÔ·Â
--- ÃâÆÇ»ç: Ã¢ºñ
-INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
-VALUES (SEQ_BOOK.NEXTVAL , '9788936433598', 'Ã¤½ÄÁÖÀÇÀÚ', 'ÇÑ°­', '¸ÇºÎÅ° »óÀ» ¹ÞÀº ÇÑ°­ÀÇ ¼Ò¼³', 1001, 247, 10000, 5, 0);
-INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
-VALUES (SEQ_BOOK.NEXTVAL , '9788936438005', 'Ç°À§ ÀÖ´Â »î', 'Á¤¼ÒÇö', 'Á¤¼ÒÇö ¼Ò¼³Áý', 1001, 248, 14000, 6, 0);
-INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
-VALUES (SEQ_BOOK.NEXTVAL , '9788936464691', 'Ãµ»ç´Â Ä§¹¬Çß´Ù', 'ÇÑÇÏÀÎ¸®È÷ ºÉ', '³ëº§ ¹®ÇÐ»ó ¼ö»ó ÀÛ°¡ ÇÏÀÎ¸®È÷ ºÉÀÇ À¯ÀÛ', 1001, 256, 14000, 3, 0);
-COMMIT;
--- ÃâÆÇ»ç : ´õ½ºÅä¸®
-INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
-VALUES (SEQ_BOOK.NEXTVAL , '9791159039690', '¾î¸°¿ÕÀÚ(ÃÊÆÇº»)', '»ýÅØÁãÆä¸®', '¼¼»ó¿¡¼­ °¡Àå ¼ø¼öÇÑ ¿µÈ¥, ¾î¸° ¿ÕÀÚ ÀÌ¾ß±â¿À¸®Áö³Î ÃÊÆÇº» Ç¥ÁöµðÀÚÀÎ!', 1002, 150, 8820, 5, 0);
-INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
-VALUES (SEQ_BOOK.NEXTVAL , '9791159036514', 'µ¥¹Ì¾È(ÃÊÆÇº»)(¸®Ä¿¹ö ÇÑÁ¤ÆÇ)', 'Çì¸£¸¸ Çì¼¼', '³ª¸¦ Ã£¾Æ°¡´Â ±æ <µ¥¹Ì¾È>', 1002, 248, 10800, 10, 0);
-INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
-VALUES (SEQ_BOOK.NEXTVAL , '9791195759019', '½ºÅä¸®ÅÚ¸µÀ¸·Î ¼³µæÀÇ °í¼ö°¡ µÇ¶ó', '½¬À©¼Û', 'ÇÏ¹öµå ºñÁî´Ï½º ½ºÄð¿¡¼­ ÀÎÁ¤¹ÞÀº ½ºÅä¸®ÅÚ¸µ ¼³µæ¹ý', 1002, 328, 13500, 7, 0);
-COMMIT;
--- ÃâÆÇ»ç :  À§Áî´ý ÇÏ¿ô
-INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
-VALUES (SEQ_BOOK.NEXTVAL , '9791190182645', 'Á¦ ÀÎ»ý¿¡ ´äÀÌ ¾ø¾î¿ä', '¼±¹Ù', 'Å©¸®¿¡ÀÌÅÍ ¼±¹ÙÀÇ °ÅÄ§¾ø´Â Çö»ý¸¸´ã', 1003, 192, 10800, 5, 0);
-INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
-VALUES (SEQ_BOOK.NEXTVAL , '9791190182560', 'ÀÎ°£ º»¼ºÀÇ ¹ýÄ¢', '·Î¹öÆ® ±×¸°', '500¸¸ ³â¿¡ °ÉÃÄ Çü¼ºµÈ ÀÎ°£ º»¼º¿¡ °üÇÑ Å½±¸¼­!', 1003, 920, 28800, 10, 0);
-INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
-VALUES (SEQ_BOOK.NEXTVAL , '9791190305273', '¿µÈ­´Â µÎ ¹ø ½ÃÀÛµÈ´Ù', 'ÀÌµ¿Áø', '¿µÈ­´Â µÎ ¹ø ½ÃÀÛµÈ´Ù. Ã³À½ ÇÑ ¹øÀº ±ØÀå ¾È¿¡¼­, ±×´ÙÀ½ ÇÑ ¹øÀº ±ØÀå ¹Û¿¡¼­.', 1003, 944, 35100, 3, 0);
-COMMIT;
--- ÃâÆÇ»ç : Èç
-INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
-VALUES (SEQ_BOOK.NEXTVAL , '9791196394509', 'Á×°í ½ÍÁö¸¸ ¶±ººÀÌ´Â ¸Ô°í ½Í¾î', '¹é¼¼Èñ', 'ÀÇ½É ¾øÀÌ Æí¾ÈÇÏ°Ô »ç¶ûÇÏ°í »ç¶û¹Þ°í ½ÍÀº ÇÑ »ç¶÷ÀÇ ÀÌ¾ß±â', 1004, 208, 12420, 4, 0);
-INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
-VALUES (SEQ_BOOK.NEXTVAL , '9791196394578', 'Á×°í ½ÍÁö¸¸ ¶±ººÀÌ´Â ¸Ô°í ½Í¾î. 2', '¹é¼¼Èñ', '¿ì¿ï¿¡ µµÃëµÇ±âº¸´Ù ³ª¸¦ ±àÁ¤ÇÏ±â¿¡ °ñ¸ôÇÏ·Á°í ¾Ö¾²´Â ÇÑ »ç¶÷ÀÇ ÀÌ¾ß±â', 1004, 264, 12420, 6, 0);
-INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
-VALUES (SEQ_BOOK.NEXTVAL , '9791196394547', '¾î»öÇÏÁö ¾Ê°Ô »ç¶ûÀ» ¸»ÇÏ´Â ¹æ¹ý', '¼ÒÀº¼º', '»·ÇÑ ¸¶À½Àº ¾ø¾î¿ä, »·ÇÑ Ç¥ÇöÀÌ ÀÖÀ» »Ó.', 1004, 292, 13320, 1, 0);
-COMMIT;
--- ÃâÆÇ»ç : ºÏÇÏ¿ì½º
-INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
-VALUES (SEQ_BOOK.NEXTVAL , '9788956055466', 'Ã¥Àº µµ³¢´Ù', '¹Ú¿õÇö', 'ÀÎ¹®ÇÐÀ¸·Î ±¤°íÇÏ´Â ¹Ú¿õÇöÀÌ µé·ÁÁÖ´Â Ç³¿ä·Î¿î »îÀ» À§ÇÑ ±íÀÌ ÀÖ´Â Ã¥ ÀÐ±âÀÇ Á¤¼ö!', 1005, 348, 14400, 11, 0);
-INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
-VALUES (SEQ_BOOK.NEXTVAL , '9791164050321', 'Æò¼ÒÀÇ ¹ß°ß', 'À¯º´¿í', 'Æò¹üÇÏÁö¸¸ ½Ã½ÃÇÏÁö ¾ÊÀº ¿ì¸®ÀÇ ¡®Æò¼Ò¡¯ ¼Ó¿¡ ¼ûÀº ³î¶ó¿î Èû!', 1005, 280, 12600, 5, 0);
-INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
-VALUES (SEQ_BOOK.NEXTVAL , '9788956058054', '³»°¡ È®½ÇÈ÷ ¾Æ´Â °Íµé', '¿ÀÇÁ¶ó À©ÇÁ¸®', '14³â µ¿¾ÈÀÇ Ä®·³¿¡¼­ ¾ö¼±ÇÑ º¸¼® °°Àº »ç»öÀÇ ±Ûµé!', 1005, 280, 12420, 3, 0);
-COMMIT;
+/* ------------------------------------------------------
+   ì¶œíŒì‚¬ ëª…ì´ ê°’ì´ ë³´ì´ëŠ” ë·°ë¥¼ ìž‘ì„±
+   ------------------------------------------------------
+*/
+CREATE OR REPLACE VIEW v_book 
+AS
+SELECT b.book_seq
+     , b.isbn
+     , b.title
+     , b.author
+     , b.content
+     , b.company_cd
+     , c.code_val  company_nm
+     , b.total_page
+     , b.price
+     , b.quantity
+     , b.reg_id
+     , b.reg_date
+     , b.mod_id
+     , b.mod_date
+  FROM BOOK b JOIN code c ON b.company_cd = c.code
+WITH READ ONLY
+;
