@@ -86,6 +86,5 @@ public interface BookDaoIf {
 	 */
 	public abstract int delete(Book book) throws NotFoundException;
 	
-	public abstract int isExists(Book book);
 	
 }

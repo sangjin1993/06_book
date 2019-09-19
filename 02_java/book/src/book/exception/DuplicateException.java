@@ -15,6 +15,6 @@ public class DuplicateException extends Exception {
 	
 	// 중복정의 생성자
 	public DuplicateException(String type, Book book) {
-		super(String.format("%s:[bookSeq%d] 도서정보가 중복되었습니다.", type, book.getBookSeq().intValue()));
+		super(String.format("%s:[bookSeq%d] 도서정보가 중복되었습니다.", type, book.getBookSeq()));
 	}
 }

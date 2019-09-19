@@ -1,16 +1,15 @@
 package book.vo;
 
-import java.math.BigDecimal;
 
 public class Code {
 
-	private BigDecimal code;
-	private BigDecimal pCode;
+	private int code;
+	private int pCode;
 	private String codeNm;
 	private String codeVal;
 	private char useYn;
 	private String codeDesc;
-	private BigDecimal sortOrder;
+	private int sortOrder;
 	private String regId;
 	private String regDate;
 	private String modId;
@@ -20,19 +19,19 @@ public class Code {
 		super();
 	}
 
-	public BigDecimal getCode() {
+	public int getCode() {
 		return code;
 	}
 
-	public void setCode(BigDecimal code) {
+	public void setCode(int code) {
 		this.code = code;
 	}
 
-	public BigDecimal getpCode() {
+	public int getpCode() {
 		return pCode;
 	}
 
-	public void setpCode(BigDecimal pCode) {
+	public void setpCode(int pCode) {
 		this.pCode = pCode;
 	}
 
@@ -68,11 +67,11 @@ public class Code {
 		this.codeDesc = codeDesc;
 	}
 
-	public BigDecimal getSortOrder() {
+	public int getSortOrder() {
 		return sortOrder;
 	}
 
-	public void setSortOrder(BigDecimal sortOrder) {
+	public void setSortOrder(int sortOrder) {
 		this.sortOrder = sortOrder;
 	}
 
@@ -112,7 +111,7 @@ public class Code {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((code == null) ? 0 : code.hashCode());
+		result = prime * result + code;
 		return result;
 	}
 
@@ -125,10 +124,7 @@ public class Code {
 		if (getClass() != obj.getClass())
 			return false;
 		Code other = (Code) obj;
-		if (code == null) {
-			if (other.code != null)
-				return false;
-		} else if (!code.equals(other.code))
+		if (code != other.code)
 			return false;
 		return true;
 	}

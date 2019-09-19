@@ -214,11 +214,30 @@ SELECT b.book_seq
     OR b.company_nm LIKE '%다%'
 ;
 -- 3. 1건 입력
+INSERT INTO BOOK (BOOK_SEQ, ISBN, TITLE, AUTHOR, CONTENT, COMPANY_CD, TOTAL_PAGE, PRICE, QUANTITY, REG_ID)
+VALUES (SEQ_BOOK.NEXTVAL , '', '', '', '', 1003, 192, 14400, 11, 0);
 
 -- 4. 1건 수정
+UPDATE BOOK b
+   SET b.isbn = ''
+     , b.title = ''
+     , b.author = ''
+     , b.content = ''
+     , b.company_cd = ''
+     , b.total_page = ''
+     , b.price = ''
+     , b.quantity = ''
+     , b.mod_id = ''
+     , b.mod_date = sysdate
+ WHERE b.book_seq = 1
+;
 
 -- 5. 1건 삭제
+DELETE BOOK b
+ WHERE b.book_seq = 1
+;
 
+-------------------------------------------------------------------------------------
 DROP TABLE MANAGER;
 CREATE TABLE MANAGER
 (  MANAGER_SEQ  NUMBER
