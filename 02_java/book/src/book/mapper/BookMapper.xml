@@ -68,7 +68,7 @@
 	</select>
 	
 	<!-- 가격 범위 도서 검색 -->
-	<select id="searchByPrice" parameterType="map" resultType="">
+	<select id="searchByPrice" parameterType="map" resultType="Book">
 		SELECT b.book_seq
 		     , b.isbn
 		     , b.title

@@ -11,6 +11,7 @@ public class Book {
 	private int companyCd;
 	private String companyNm;
 	private int totalPage;
+	private int price;
 	private int quantity;
 	private String regId;
 	private String regDate;
@@ -124,6 +125,15 @@ public class Book {
 	public void setModDate(String modDate) {
 		this.modDate = modDate;
 	}
+	
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
 
 	@Override
 	public int hashCode() {
@@ -149,10 +159,13 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return "책 정보 [bookSeq=" + bookSeq + ", isbn=" + isbn + ", title=" + title + ", author=" + author + ", content="
-				+ content + ", companyCd=" + companyCd + "companyNm=" + companyNm + ", totalPage=" + totalPage + ", quantity=" + quantity
-				+ ", regId=" + regId + ", regDate=" + regDate + ", modId=" + modId + ", modDate=" + modDate + "]";
+		return "책정보 [bookSeq=" + bookSeq + ", isbn=" + isbn + ", title=" + title + ", author=" + author + ", content="
+				+ content + ", companyCd=" + companyCd + ", companyNm=" + companyNm + ", totalPage=" + totalPage
+				+ ", price=" + price + ", quantity=" + quantity + ", regId=" + regId + ", regDate=" + regDate
+				+ ", modId=" + modId + ", modDate=" + modDate + "]";
 	}
+
+	
 	
 	
 }
