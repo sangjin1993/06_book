@@ -5,4 +5,181 @@
   
 <mapper namespace="book.mapper.BookMapper">
 	
+	<!-- 도서 정보 1건 조회 혹은 전체 목록 조회 쿼리 -->
+	<select id="select" parameterType="Book" resultType="Book">
+		SELECT b.book_seq
+     		 , b.isbn
+     		 , b.title
+     		 , b.author
+     		 , b.content
+     		 , b.company_cd
+    		 , b.company_nm
+   		     , b.total_page
+     		 , b.price
+		     , b.quantity
+		     , b.reg_id
+		     , b.reg_date
+		     , b.mod_id
+		     , b.mod_date
+		  FROM v_book b
+		<if test="bookSeq != null">
+			WHERE b.book_seq = #{bookSeq}
+		</if>
+	</select>
+	
+	<!-- 출판사 코드로 도서 검색 -->
+	<select id="searchByCompanyCd" parameterType="Code" resultType="Book">
+			SELECT b.book_seq
+		     , b.isbn
+		     , b.title
+		     , b.author
+		     , b.content
+		     , b.company_cd
+		     , b.company_nm
+		     , b.total_page
+		     , b.price
+		     , b.quantity
+		     , b.reg_id
+		     , b.reg_date
+		     , b.mod_id
+		     , b.mod_date
+		  FROM v_book b
+		 WHERE b.company_cd = #{Code}
+	</select>
+	
+	<!-- 일정 가격 이하 도서 검색 -->
+	<select id="searchByBelowPrice" parameterType="int" resultType="Book">
+		SELECT b.book_seq
+		     , b.isbn
+		     , b.title
+		     , b.author
+		     , b.content
+		     , b.company_cd
+		     , b.company_nm
+		     , b.total_page
+		     , b.price
+		     , b.quantity
+		     , b.reg_id
+		     , b.reg_date
+		     , b.mod_id
+		     , b.mod_date
+		  FROM v_book b
+		 WHERE b.price <![CDATA[<=]]> #{value}
+	</select>
+	
+	<!-- 가격 범위 도서 검색 -->
+	<select id="searchByPrice" parameterType="map" resultType="">
+		SELECT b.book_seq
+		     , b.isbn
+		     , b.title
+		     , b.author
+		     , b.content
+		     , b.company_cd
+		     , b.company_nm
+		     , b.total_page
+		     , b.price
+		     , b.quantity
+		     , b.reg_id
+		     , b.reg_date
+		     , b.mod_id
+		     , b.mod_date
+		  FROM v_book b
+		 WHERE b.price BETWEEN #{min} AND #{max}
+	</select>
+	
+	<select id="searchByOverPrice" parameterType="int" resultType="Book">
+		SELECT b.book_seq
+		     , b.isbn
+		     , b.title
+		     , b.author
+		     , b.content
+		     , b.company_cd
+		     , b.company_nm
+		     , b.total_page
+		     , b.price
+		     , b.quantity
+		     , b.reg_id
+		     , b.reg_date
+		     , b.mod_id
+		     , b.mod_date
+		  FROM v_book b
+		 WHERE b.price >= #{value}
+	</select>
+	
+	<!-- 제목, 저자, 출판사명 종합 조회 -->
+	<select id="searchByAll" parameterType="String" resultType="Book">
+		SELECT b.book_seq
+		     , b.isbn
+		     , b.title
+		     , b.author
+		     , b.content
+		     , b.company_cd
+		     , b.company_nm
+		     , b.total_page
+		     , b.price
+		     , b.quantity
+		     , b.reg_id
+		     , b.reg_date
+		     , b.mod_id
+		     , b.mod_date
+		  FROM v_book b
+		 WHERE b.title LIKE '%' || #{value} || '%'
+		    OR b.author LIKE '%' || #{value} || '%
+		    OR b.content LIKE '%' || #{value} || '%
+		    OR b.company_nm LIKE '%' || #{value} || '%
+	</select>
+	
+	<!-- 도서 정보 1건 입력 -->
+	<insert id="insert" parameterType="map">
+		INSERT INTO BOOK 
+			(BOOK_SEQ
+			, ISBN, TITLE
+			, AUTHOR
+			, CONTENT
+			, COMPANY_CD
+			, TOTAL_PAGE
+			, PRICE
+			, QUANTITY
+			, REG_ID)
+		VALUES 
+		    (SEQ_BOOK.NEXTVAL
+		    , #{isbn}
+		    , #{title}
+		    , #{athor}
+		    , #{content}
+		    , #{companyCd}
+		    , #{totalPage}
+		    , #{price}
+		    , #{quantity}
+		    , #{modId})
+	</insert>
+	
+	<!-- 도서 정보 1건 수정 -->
+	<update id="update" parameterType="map">
+		UPDATE BOOK b
+		   SET b.isbn = #{isbn}
+		     , b.title = #{title}
+		     , b.author = #{author}
+		     , b.content = #{content}
+		     , b.company_cd = #{companyCd}
+		     , b.total_page = #{totalPage}
+		     , b.price = #{price}
+		     , b.quantity = #{quantity}
+		     , b.mod_id = #{modId}
+		     , b.mod_date = sysdate
+		 WHERE b.book_seq = #{bookSeq}
+	</update>
+	
+	<!-- 도서정보 1건 삭제 -->
+	<delete id="delete" parameterType="Book">
+		DELETE BOOK b
+		 WHERE b.book_seq = #{bookSeq}
+	</delete>
+	
+	<!-- 도서 1건 존재 여부 검색 -->
+	<select id="isExist" parameterType="Book" resultType="int">
+		SELECT b.bookSeq
+		  FROM book b
+		 WHERE b.bookSeq = #{bookSeq}
+	</select>
 </mapper>

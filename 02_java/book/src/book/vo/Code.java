@@ -1,16 +1,16 @@
 package book.vo;
 
-import java.math.BigInteger;
+import java.math.BigDecimal;
 
 public class Code {
 
-	private BigInteger code;
-	private BigInteger pCode;
+	private BigDecimal code;
+	private BigDecimal pCode;
 	private String codeNm;
 	private String codeVal;
 	private char useYn;
 	private String codeDesc;
-	private BigInteger sortOrder;
+	private BigDecimal sortOrder;
 	private String regId;
 	private String regDate;
 	private String modId;
@@ -20,19 +20,19 @@ public class Code {
 		super();
 	}
 
-	public BigInteger getCode() {
+	public BigDecimal getCode() {
 		return code;
 	}
 
-	public void setCode(BigInteger code) {
+	public void setCode(BigDecimal code) {
 		this.code = code;
 	}
 
-	public BigInteger getpCode() {
+	public BigDecimal getpCode() {
 		return pCode;
 	}
 
-	public void setpCode(BigInteger pCode) {
+	public void setpCode(BigDecimal pCode) {
 		this.pCode = pCode;
 	}
 
@@ -68,11 +68,11 @@ public class Code {
 		this.codeDesc = codeDesc;
 	}
 
-	public BigInteger getSortOrder() {
+	public BigDecimal getSortOrder() {
 		return sortOrder;
 	}
 
-	public void setSortOrder(BigInteger sortOrder) {
+	public void setSortOrder(BigDecimal sortOrder) {
 		this.sortOrder = sortOrder;
 	}
 

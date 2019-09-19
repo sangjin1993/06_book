@@ -1,10 +1,10 @@
 package book.vo;
 
-import java.math.BigInteger;
+import java.math.BigDecimal;
 
 public class Manager {
 
-	private BigInteger managerSeq;
+	private BigDecimal managerSeq;
 	private String managerId;
 	private String name;
 	private String password;
@@ -17,11 +17,11 @@ public class Manager {
 		super();
 	}
 
-	public BigInteger getManagerSeq() {
+	public BigDecimal getManagerSeq() {
 		return managerSeq;
 	}
 
-	public void setManagerSeq(BigInteger managerSeq) {
+	public void setManagerSeq(BigDecimal managerSeq) {
 		this.managerSeq = managerSeq;
 	}
 
