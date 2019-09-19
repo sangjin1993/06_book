@@ -13,6 +13,8 @@
 </style>
 </head>
 <body>
+<!-- 컨텍스트 패스 경로 요청 객체에 속성으로 추가 -->
+<c:set var="contextPath" value="${pageContext.request.contextPath}" scope="request" />
 <!-- table>(tr>td*2)*3 -->
 <table>
 	<tr>
