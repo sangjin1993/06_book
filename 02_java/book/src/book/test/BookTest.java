@@ -4,7 +4,10 @@ import java.util.List;
 
 import book.dao.BookDaoIf;
 import book.dao.BookDaoImpl;
+import book.dao.CodeDaoIf;
+import book.dao.CodeDaoImpl;
 import book.vo.Book;
+import book.vo.Code;
 
 /**
  * 서블릇으로 구현하는 컨트롤러 작성 전
@@ -29,6 +32,13 @@ public class BookTest {
 			System.out.println(book);
 		}
 		
+		CodeDaoIf codeDao = new CodeDaoImpl();
+		
+		List<Code> codes = codeDao.selectCompanies();
+		
+		for (Code code: codes) {
+			System.out.println(code);
+		}
 	}
 
 }

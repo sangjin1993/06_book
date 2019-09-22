@@ -41,51 +41,16 @@
 		<tr>
 			<th>출판사</th>
 			<td>
-<!-- 			(input[type="radio" name="companyCd" value="100$" id="100$"]+labal[for="100$"]{출판사이름})*5 -->
-			<c:if test="${book.companyCd eq 1001}">
-				<input type="radio" name="companyCd" value="1001" id="1001" checked="checked" />
-				<labal for="1001">창비</labal>
-			</c:if>
-			<c:if test="${book.companyCd ne 1001}">
-				<input type="radio" name="companyCd" value="1001" id="1001"/>
-				<labal for="1001">창비</labal>
-			</c:if>
-			
-			<c:if test="${book.companyCd eq 1002}">
-				<input type="radio" name="companyCd" value="1002" id="1002" checked="checked"/>
-				<labal for="1002">더 스토리</labal>
-			</c:if>
-			<c:if test="${book.companyCd ne 1002}">
-				<input type="radio" name="companyCd" value="1002" id="1002"/>
-				<labal for="1002">더 스토리</labal>
-			</c:if>
-			
-			<c:if test="${book.companyCd eq 1003}">
-				<input type="radio" name="companyCd" value="1003" id="1003" checked="checked" />
-				<labal for="1003">위즈덤</labal>
-			</c:if>
-			<c:if test="${book.companyCd ne 1003}">
-				<input type="radio" name="companyCd" value="1003" id="1003"/>
-				<labal for="1003">위즈덤</labal>
-			</c:if>
-			
-			<c:if test="${book.companyCd eq 1004}">
-				<input type="radio" name="companyCd" value="1004" id="1004" checked="checked" />
-				<labal for="1004">흔</labal>
-			</c:if>
-			<c:if test="${book.companyCd ne 1004}">
-				<input type="radio" name="companyCd" value="1004" id="1004"/>
-				<labal for="1004">흔</labal>
-			</c:if>
-			
-			<c:if test="${book.companyCd eq 1005}">
-				<input type="radio" name="companyCd" value="1005" id="1005" checked="checked" />
-				<labal for="1005">북 하우스</labal>
-			</c:if>
-			<c:if test="${book.companyCd ne 1005}">
-				<input type="radio" name="companyCd" value="1005" id="1005"/>
-				<labal for="1005">북 하우스</labal>
-			</c:if>
+				<c:forEach var="code" items="${codes}">
+				<c:if test="${book.companyCd eq code.code}">
+					<input type="radio" name="companyCd" value="${code.code}" id="${code.code}" checked="checked" />
+					<label for="${code.code}">${code.codeVal}</label>
+				</c:if>
+				<c:if test="${book.companyCd ne code.code}">
+					<input type="radio" name="companyCd" value="${code.code}" id="${code.code}"/>
+					<label for="${code.code}">${code.codeVal}</label>
+				</c:if>
+				</c:forEach>
 			</td>
 		</tr>
 		<tr>

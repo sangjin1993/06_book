@@ -25,6 +25,7 @@
 		<if test="bookSeq != null">
 			WHERE b.book_seq = #{bookSeq}
 		</if>
+		ORDER BY b.book_seq
 	</select>
 	
 	<!-- 출판사 코드로 도서 검색 -->
@@ -124,16 +125,17 @@
 		     , b.mod_date
 		  FROM v_book b
 		 WHERE b.title LIKE '%' || #{value} || '%'
-		    OR b.author LIKE '%' || #{value} || '%
-		    OR b.content LIKE '%' || #{value} || '%
-		    OR b.company_nm LIKE '%' || #{value} || '%
+		    OR b.author LIKE '%' || #{value} || '%'
+		    OR b.content LIKE '%' || #{value} || '%'
+		    OR b.company_nm LIKE '%' || #{value} || '%'
 	</select>
 	
 	<!-- 도서 정보 1건 입력 -->
 	<insert id="insert" parameterType="map">
 		INSERT INTO BOOK 
 			(BOOK_SEQ
-			, ISBN, TITLE
+			, ISBN
+			, TITLE
 			, AUTHOR
 			, CONTENT
 			, COMPANY_CD
@@ -145,13 +147,13 @@
 		    (SEQ_BOOK.NEXTVAL
 		    , #{isbn}
 		    , #{title}
-		    , #{athor}
+		    , #{author}
 		    , #{content}
 		    , #{companyCd}
 		    , #{totalPage}
 		    , #{price}
 		    , #{quantity}
-		    , #{modId})
+		    , #{regId})
 	</insert>
 	
 	<!-- 도서 정보 1건 수정 -->
@@ -177,9 +179,9 @@
 	</delete>
 	
 	<!-- 도서 1건 존재 여부 검색 -->
-	<select id="isExist" parameterType="Book" resultType="int">
-		SELECT b.bookSeq
+	<select id="isExists" parameterType="Book" resultType="integer">
+		SELECT b.book_seq
 		  FROM book b
-		 WHERE b.bookSeq = #{bookSeq}
+		 WHERE b.book_seq = #{bookSeq}
 	</select>
 </mapper>

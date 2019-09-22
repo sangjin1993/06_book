@@ -5,14 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<!-- 2초 후에 url 에 명시된 다음페이지로 GET 요청을 보냄, 화면 리프레시 작용 -->
+<meta http-equiv="refresh" content="2;url=${requestScope.nextPage}">
+
 <title>Insert title here</title>
 </head>
 <body>
-
-<img src="${pageContext.request.contextPath}/images/logo.png">
-<c:if test="${not empty sessionScope.userId}">
-	<div id="result">${userId} 로그인 중...</div>
-</c:if>
+${requestScope.message}
 
 </body>
 </html>

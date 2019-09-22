@@ -26,6 +26,6 @@ public interface BookMapper {
 	
 	public abstract int delete(Book book);
 	
-	public abstract int isExists(Book book);
+	public abstract Integer isExists(Book book);
 	
 }

@@ -36,7 +36,7 @@
     	<td><a href="${contextPath}/main?action=detail&bookSeq=${book.bookSeq}">${book.title}</a></td>
     	<td>${book.author}</td>
     	<td><fmt:formatNumber value="${book.price}" type="number" /></td>
-    	<td>&nbsp;</td>
+    	<td><a href="${contextPath}/main?action=delete&bookSeq=${book.bookSeq}">삭제</a></td>
     </tr>
   </c:forEach>
 </table>

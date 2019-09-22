@@ -305,10 +305,10 @@ public class BookDaoImpl implements BookDaoIf {
 			Book book = new Book();
 			book.setBookSeq(bookSeq);
 			
-			int seq = mapper.isExists(book);
+			Integer seq = mapper.isExists(book);
 			
-			if (seq > 0) {
-				// 검색된 책의 일련번호가 0보다 크면 존재한다는 뜻
+			if (seq != null) {
+				// seq 가 null 이 아니라는 것은 조회된 도서 정보가 존재
 				exists = true;
 			}
 			

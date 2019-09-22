@@ -331,3 +331,25 @@ SELECT b.book_seq
   FROM BOOK b JOIN code c ON b.company_cd = c.code
 WITH READ ONLY
 ;
+
+--=========================================================
+-- 관리자 로그인 쿼리 : 아이디 비번 일치 여부 판단
+SELECT m.manager_seq
+  FROM MANAGER m
+ WHERE m.manager_id = 'admin'
+    AND m.password = 'admin'
+;
+SELECT m.*
+  FROM MANAGER m
+;
+
+--===========================================================
+-- 코드 조회 쿼리
+SELECT c.code
+     , c.code_nm
+     , c.code_val
+  FROM CODE c
+ WHERE c.p_code = 1000
+   AND c.use_yn = 'Y'
+;
+

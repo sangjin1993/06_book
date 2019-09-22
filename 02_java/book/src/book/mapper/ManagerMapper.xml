@@ -5,4 +5,10 @@
   
 <mapper namespace="book.mapper.ManagerMapper">
 
+	<select id="login" parameterType="Manager" resultType="integer">
+		SELECT m.manager_seq
+	 	  FROM MANAGER m
+		 WHERE m.manager_id = #{managerId}
+	       AND m.password = #{password}
+	</select>
 </mapper>

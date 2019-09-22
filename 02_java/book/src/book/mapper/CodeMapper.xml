@@ -5,4 +5,12 @@
   
 <mapper namespace="book.mapper.CodeMapper">
 
+	<select id="selectCompanies" resultType="Code" >
+		SELECT c.code
+		     , c.code_nm
+		     , c.code_val
+		  FROM CODE c
+		 WHERE c.p_code = 1000
+		   AND c.use_yn = 'Y'
+	</select>
 </mapper>
